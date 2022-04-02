@@ -12,14 +12,20 @@ config_version=4
 
 config/name="HackOrDie"
 run/main_scene="res://Main.tscn"
+run/low_processor_mode=true
 config/icon="res://icon.png"
 
 [display]
 
-window/size/test_width=2048
-window/size/test_height=1200
+window/size/always_on_top=true
+window/size/test_width=3072
+window/size/test_height=1800
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[global]
+
+low=false
 
 [gui]
 
