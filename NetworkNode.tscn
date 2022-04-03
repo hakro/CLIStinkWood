@@ -24,15 +24,15 @@ margin_top = -80.0
 margin_right = 467.0
 margin_bottom = -20.0
 custom_fonts/font = SubResource( 1 )
-text = "Balance: 50"
+text = "Balance: XX"
 
 [node name="FirewallLabel" type="Label" parent="."]
 margin_left = 200.0
-margin_top = -20.0
-margin_right = 457.0
-margin_bottom = 40.0
+margin_top = -6.66667
+margin_right = 529.0
+margin_bottom = 69.3333
 custom_fonts/font = SubResource( 1 )
-text = "Firewall: 50"
+text = "Firewall: XX"
 
 [node name="ClickArea" type="Area2D" parent="."]
 script = ExtResource( 4 )
@@ -49,6 +49,8 @@ margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 text = "Attack"
 
+[connection signal="area_entered" from="ClickArea" to="." method="_on_ClickArea_area_entered"]
+[connection signal="clicked" from="ClickArea" to="." method="_on_ClickArea_clicked"]
 [connection signal="input_event" from="ClickArea" to="ClickArea" method="_on_ClickArea_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_ClickArea_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_ClickArea_mouse_exited"]
