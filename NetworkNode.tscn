@@ -35,6 +35,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Firewall: XX"
 
 [node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
@@ -49,8 +51,11 @@ margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 text = "Attack"
 
+[node name="AttackTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="ClickArea" to="." method="_on_ClickArea_area_entered"]
 [connection signal="clicked" from="ClickArea" to="." method="_on_ClickArea_clicked"]
 [connection signal="input_event" from="ClickArea" to="ClickArea" method="_on_ClickArea_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_ClickArea_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_ClickArea_mouse_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

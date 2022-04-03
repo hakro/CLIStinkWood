@@ -1,23 +1,28 @@
 extends Sprite
 
+signal updated_firewall
 signal updated_balance
 signal updated_viruses
 signal updated_scanners
 signal updated_delayers
+signal game_over
 
 onready var attack_timer = $AttackTimer
 onready var scan_gradient := $ScanGradient
 onready var scan_tween := $ScanTween
+onready var delayer_sprite := $DelayerSprite
 onready var bullet_scene := preload("res://NetworkBullet.tscn")
 
 var targets : Array = []
 var firewall := 100
-var balance := 1500
+var balance := 70
 
 # Inventory
 var viruses := 0
 var delayers := 0
 var scanners := 0
+
+var delayer_enabled : bool = false
 
 func add_target(target):
 	targets.append(target)
@@ -48,6 +53,10 @@ func scan_network():
 func _on_AttackTimer_timeout() -> void:
 	attack_targets()
 
+func set_firewall(value):
+	firewall = value
+	emit_signal("updated_firewall")
+
 func set_balance(value):
 	balance = value
 	emit_signal("updated_balance")
@@ -63,3 +72,25 @@ func set_scanners(value):
 func set_delayers(value):
 	delayers = value
 	emit_signal("updated_delayers")
+
+func enable_delayer():
+	if not delayer_enabled:
+		delayer_sprite.visible = true
+		set_delayers(delayers - 1)
+		Global.display_info_message("Delayer enabled for 10 seconds. Enemies cannot attack you")
+		delayer_enabled = true
+		set_firewall(firewall + 10)
+		yield(get_tree().create_timer(10.0), "timeout")
+		delayer_sprite.visible = false
+		delayer_enabled = false
+	else:
+		Global.display_info_message("Delayer already enabled")
+
+
+func _on_HurtArea_area_entered(area: Area2D) -> void:
+	area.queue_free()
+	if firewall >= 0:
+		set_firewall(firewall - 2)
+	else:
+		emit_signal("game_over")
+		pause_mode = Node.PAUSE_MODE_STOP

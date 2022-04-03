@@ -13,7 +13,7 @@ func _ready() -> void:
 		info_messages = get_tree().get_nodes_in_group("info_messages")[0]
 	if get_tree().get_nodes_in_group("network_nodes").size() > 0:
 		nodes = get_tree().get_nodes_in_group("network_nodes")
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(2.0), "timeout")
 	display_info_message("Info: Go buy a Scanner and a Virus from the Shop")
 
 func display_info_message(text : String, timeout : float = 5.0):
@@ -33,3 +33,13 @@ func next_scan():
 			nodes[2].visible = true
 			nodes[3].visible = true
 			display_info_message("Info: The red nodes will attack you back. Use a delayer to stop their attacks for 30s")
+		3:
+			nodes[4].visible = true
+			nodes[5].visible = true
+		4:
+			nodes[6].visible = true
+		5:
+			nodes[7].visible = true
+			nodes[8].visible = true
+		6:
+			nodes[9].visible = true

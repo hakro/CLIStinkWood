@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://images/radial_gradient.png" type="Texture" id=3]
+[ext_resource path="res://images/delayer.png" type="Texture" id=4]
 
 [sub_resource type="StreamTexture" id=7]
 flags = 4
@@ -11,6 +12,9 @@ load_path = "res://.import/network_node.png-349ea8d3c5fed5569a1fe1f97718e651.ste
 [sub_resource type="DynamicFont" id=8]
 size = 84
 font_data = ExtResource( 1 )
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 160.0
 
 [node name="Player" type="Sprite" groups=["player"]]
 self_modulate = Color( 0.0705882, 0.690196, 0.0941176, 1 )
@@ -35,4 +39,17 @@ texture = ExtResource( 3 )
 
 [node name="ScanTween" type="Tween" parent="."]
 
+[node name="HurtArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource( 9 )
+
+[node name="DelayerSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, -120 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 4 )
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="area_entered" from="HurtArea" to="." method="_on_HurtArea_area_entered"]
