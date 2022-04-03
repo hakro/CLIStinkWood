@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://fonts/Rubik-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/Rubik_18.tres" type="DynamicFontData" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://images/scanner.png" type="Texture" id=7]
 [ext_resource path="res://images/virus.png" type="Texture" id=8]
 [ext_resource path="res://images/delayer.png" type="Texture" id=9]
+[ext_resource path="res://images/scanner_hover.png" type="Texture" id=10]
+[ext_resource path="res://images/delayer_hover.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -41,6 +43,11 @@ corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.117647, 0.105882, 0.105882, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+outline_size = 1
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 13
@@ -189,10 +196,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="ScannerImage" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
+[node name="ScannerButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
 margin_right = 50.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 10 )
 
 [node name="ScannerLabel" type="Label" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
 margin_left = 54.0
@@ -202,11 +210,12 @@ margin_bottom = 37.0
 custom_fonts/font = SubResource( 7 )
 text = "    Scanners : 0"
 
-[node name="DelayerImage" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
+[node name="DelayerButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
 margin_top = 54.0
 margin_right = 50.0
 margin_bottom = 94.0
 texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 11 )
 
 [node name="DelayerLabel" type="Label" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
 margin_left = 54.0
@@ -216,7 +225,7 @@ margin_bottom = 86.0
 custom_fonts/font = SubResource( 7 )
 text = "    Delayers : 0"
 
-[node name="VirusImage" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
+[node name="VirusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools"]
 margin_top = 98.0
 margin_right = 50.0
 margin_bottom = 138.0
@@ -295,6 +304,15 @@ margin_right = 290.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 2 )
 text = "Network viewer"
+
+[node name="InfoMessages" type="Label" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" groups=["info_messages"]]
+self_modulate = Color( 0.619608, 0.168627, 0.168627, 0.92549 )
+margin_left = 4.0
+margin_top = 33.0
+margin_right = 684.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+autowrap = true
 
 [node name="Player" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 6 )]
 position = Vector2( 364, 284 )
@@ -382,7 +400,7 @@ margin_top = 87.7819
 margin_right = 137.28
 margin_bottom = 184.782
 custom_fonts/font = SubResource( 8 )
-text = "Delayer : $ 150
+text = "Delayer : $ 200
 
 Delays enemi attacks and boosts your firewall"
 align = 1
@@ -443,6 +461,9 @@ custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 5 )
 text = "Close"
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools/ScannerButton" to="." method="_on_ScannerButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools/DelayerButton" to="." method="_on_DelayerButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/GridTools/VirusButton" to="." method="_on_VirusButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/LeftSplit/MarginContainer/VBoxContainer/Stats/ShopButton" to="." method="_on_ShopButton_pressed"]
 [connection signal="pressed" from="Shop/VBoxContainer/HBoxContainer/ColorRect/BuyScanner" to="." method="_on_BuyScanner_pressed"]
 [connection signal="pressed" from="Shop/VBoxContainer/HBoxContainer/ColorRect5/BuyDelayer" to="." method="_on_BuyDelayer_pressed"]

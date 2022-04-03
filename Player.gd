@@ -1,11 +1,14 @@
 extends Sprite
 
+signal updated_balance
+signal updated_viruses
+
 onready var attack_timer = $AttackTimer
 onready var bullet_scene := preload("res://NetworkBullet.tscn")
 
 var targets : Array = []
 var firewall := 100
-var balance := 500
+var balance := 150
 
 # Inventory
 var viruses := 0
@@ -25,3 +28,11 @@ func attack_targets():
 
 func _on_AttackTimer_timeout() -> void:
 	attack_targets()
+
+func set_balance(value):
+	balance = value
+	emit_signal("updated_balance")
+
+func set_viruses(value):
+	viruses = value
+	emit_signal("updated_viruses")

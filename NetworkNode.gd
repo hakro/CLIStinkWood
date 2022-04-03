@@ -25,6 +25,13 @@ func set_firewall(value: int):
 
 
 func _on_ClickArea_clicked() -> void:
+	if player.viruses <= 0:
+		Global.display_info_message("Info: You need to buy viruses from the Shop to attack")
+		return
+	if firewall > 10:
+		set_firewall(firewall - 10)
+
+	player.set_viruses(player.viruses - 1)
 	if not attacked:
 		print("player attacked node")
 		attacked = true
@@ -32,5 +39,10 @@ func _on_ClickArea_clicked() -> void:
 
 
 func _on_ClickArea_area_entered(area: Area2D) -> void:
+	# remove from balance based on the firewall
+	var hit_value := (100 - firewall) / 10
+	set_balance(balance - hit_value)
+	player.set_balance(player.balance + hit_value)
+
 	# Network bullet detected
 	area.queue_free()
