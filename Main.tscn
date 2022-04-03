@@ -332,6 +332,7 @@ custom_fonts/font = SubResource( 9 )
 autowrap = true
 
 [node name="Player" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 6 )]
+self_modulate = Color( 0.0588235, 0.737255, 0.0862745, 1 )
 position = Vector2( 364, 284 )
 
 [node name="NetworkNode0" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
