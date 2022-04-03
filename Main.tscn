@@ -317,8 +317,45 @@ autowrap = true
 [node name="Player" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 6 )]
 position = Vector2( 364, 284 )
 
-[node name="NetworkNode" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
-position = Vector2( 252, 132 )
+[node name="NetworkNode1" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 282, 131 )
+
+[node name="NetworkNode2" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 596, 204 )
+
+[node name="NetworkNode3" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 564, 292 )
+
+[node name="NetworkNode4" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 404, 398 )
+
+[node name="NetworkNode5" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 236, 476 )
+
+[node name="NetworkNode6" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 580, 428 )
+
+[node name="NetworkNode7" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 492, 152 )
+
+[node name="NetworkNode8" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 190, 388 )
+
+[node name="NetworkNode9" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 100, 296 )
+
+[node name="NetworkNode10" parent="VBoxContainer/HBoxContainer/HSplitContainer/RightSplit" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 132, 186 )
 
 [node name="Shop" type="Panel" parent="."]
 visible = false
@@ -439,7 +476,7 @@ margin_bottom = 184.782
 custom_fonts/font = SubResource( 8 )
 text = "Virus : $ 100
 
-Attack nodes and hurts their firewall. Click a node to attack"
+Attack nodes to steal their money and hurts their firewall. Click a node to attack"
 align = 1
 autowrap = true
 

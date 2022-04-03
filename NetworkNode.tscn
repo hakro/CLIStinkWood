@@ -12,7 +12,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 160.0
 
-[node name="NetworkNode" type="Sprite"]
+[node name="NetworkNode" type="Sprite" groups=["network_nodes"]]
 self_modulate = Color( 0.0705882, 0.219608, 0.505882, 1 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )

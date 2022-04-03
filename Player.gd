@@ -43,7 +43,7 @@ func scan_network():
 		scan_tween.start()
 		yield(get_tree().create_timer(1.0), "timeout")
 		scan_gradient.visible = false
-
+		Global.next_scan()
 
 func _on_AttackTimer_timeout() -> void:
 	attack_targets()
