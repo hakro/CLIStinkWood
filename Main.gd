@@ -18,6 +18,8 @@ func _ready() -> void:
 		balance_label.text = "$ " + String(player.balance)
 		player.connect("updated_balance", self, "update_balance_display")
 		player.connect("updated_viruses", self, "update_viruses_display")
+		player.connect("updated_delayers", self, "update_delayers_display")
+		player.connect("updated_scanners", self, "update_scanners_display")
 
 func _on_ShopButton_pressed() -> void:
 	$Shop.visible = true
@@ -53,11 +55,18 @@ func update_balance_display():
 func update_viruses_display():
 	viruses_label.text = "    Viruses : " + String(player.viruses)
 
+func update_delayers_display():
+	delayers_label.text = "    Delayers : " + String(player.delayers)
+
+func update_scanners_display():
+	scanners_label.text = "    Scanners : " + String(player.scanners)
+
 func _on_VirusButton_pressed() -> void:
 	if player.viruses <= 0:
-		Global.display_info_message("Info: You need to buy viruses from the Shop")
-	else:
-		Global.display_info_message("Info: Click on a detected network node to attack it")
+		Global.display_info_message("Info: You need to buy viruses from the Shop to attack network nodes")
+		return
+
+	Global.display_info_message("Info: Click on a detected network node to attack it")
 
 func _on_DelayerButton_pressed() -> void:
 	if player.delayers <= 0:
@@ -66,5 +75,6 @@ func _on_DelayerButton_pressed() -> void:
 
 func _on_ScannerButton_pressed() -> void:
 	if player.scanners <= 0:
-		Global.display_info_message("Info: You need to buy scanners from the Shop to scan network")
+		Global.display_info_message("Info: You need to buy scanners from the Shop to scan the network for victims")
 		return
+	player.scan_network()

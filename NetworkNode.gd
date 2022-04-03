@@ -10,7 +10,7 @@ var balance : int
 var firewall : int
 
 func _ready() -> void:
-	set_balance(5000)
+	set_balance(2000 + randi() % 5000)
 	set_firewall(100)
 	if get_tree().get_nodes_in_group("player").size() > 0:
 		player = get_tree().get_nodes_in_group("player")[0]
