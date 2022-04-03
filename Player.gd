@@ -5,12 +5,12 @@ onready var bullet_scene := preload("res://NetworkBullet.tscn")
 
 var targets : Array = []
 var firewall := 100
-var balance := 50
+var balance := 500
 
 # Inventory
 var viruses := 0
 var delayers := 0
-var scanner := 0
+var scanners := 0
 
 func add_target(target):
 	targets.append(target)
